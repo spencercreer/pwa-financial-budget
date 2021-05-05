@@ -1,6 +1,20 @@
 let transactions = [];
 let myChart;
 
+// I have only edited this code block
+
+// useIndexedDb("budget", "transactions", "post").then
+// // Do I need this? What is storeName? I am putting the collection name
+// useIndexedDb("budget", "transactions", "get").then(results => {
+//   results.forEach(transaction => {
+//     console.log(transaction)
+//     populateTotal();
+//     populateTable();
+//     populateChart();
+//   })
+// })
+
+// ------------------------------
 fetch("/api/transaction")
   .then(response => {
     return response.json();
