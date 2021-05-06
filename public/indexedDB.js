@@ -1,26 +1,24 @@
-
-
 const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || shimIndexedDB || msIndexedDB;
 
 let db;
-const request = indexedDB.open("budget", 1)
+const request = indexedDB.open("budget", 1);
 
 request.onupgradeneeded = function (event) {
   const db = event.target.result;
   db.createObjectStore("pending", { autoIncrement: true })
 }
 
-request.onsuccess = ({ target }) => {
-  let db = target.result;
+request.onsuccess = function(event) {
+  let db = event.target.result;
   if (navigator.onLine) {
-    checkDatabase();
+    useIndexedDb();
   }
 }
 
 // onerror handler console log "There was and error"
 request.onerror = function (event) {
   console.log("There was an error " + event.target.errorCode);
-};
+}
 
 
 function saveRecord(record) {
@@ -29,20 +27,21 @@ function saveRecord(record) {
   store.add(record);
 }
 
-function useIndexedDB() {
+function useIndexedDb() {
   const transaction = db.transaction(["pending"], "readwrite");
   const store = transaction.objectStore("pending");
-  const getAll = store.getAll();
-  getAll.onsuccess = function () {
-    if (getAll.result.length > 0) {
+  const getAllRequest = store.getAll();
+  getAllRequest.onsuccess = function () {
+    if (getAllRequest.result.length > 0) {
       fetch("/api/transaction/bulk", {
         method: "POST",
-        body: JSON.stringify(getAll.result),
+        body: JSON.stringify(getAllRequest.result),
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json"
         }
-      }).then(response => {
+      })
+      .then(response => {
         return response.json()
       }).then(() => {
         const transaction = db.transaction(["pending"], "readwrite");
@@ -54,4 +53,4 @@ function useIndexedDB() {
 
 }
 
-window.addEventListener("online", useIndexedDb)
+window.addEventListener("online", useIndexedDb);
