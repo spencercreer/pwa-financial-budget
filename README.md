@@ -15,14 +15,14 @@ A budget progressive web application that allows a user to log expenses and depo
 * [Contact](#contact)
 
 ## Links
-Published URL: [TBD](TBD)
+Published URL: [https://pwa-budget-log.herokuapp.com/](https://pwa-budget-log.herokuapp.com/)
 
 Repository: [https://github.com/spencercreer/pwa-financial-budget](https://github.com/spencercreer/pwa-financial-budget)
 
 
 ## Animation
 The following animation demonstrates the application functionality:
-![PWA Budget animation](TBD)
+![PWA Budget animation](./public/assets/budget1.gif)
 
 ## Instructions
 The user may enter a transaction name and amount and click the add or subtract funds buttons. The transaction will be stored to the datase and displayed in the table and chart. The user may add transactions while offline. Transactions entered while offline will be stored to the database once the application is brought online.
