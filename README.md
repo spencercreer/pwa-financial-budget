@@ -2,7 +2,7 @@
 ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Description
-A budget progressive web application that allows a user to log expenses and deposits. When offline, a user is able to enter deposits and expenses which are tracked when the app is bought online.
+A budget progressive web application that allows a user to log expenses and deposits. When offline, a user is able to enter deposits and expenses which are tracked when the app is bought online. This progressive web application utilizes a serviceWorker, manifest, and indexedDB.
 
 ## Table of Contents
 * [Links](#links)
@@ -25,7 +25,7 @@ The following animation demonstrates the application functionality:
 ![PWA Budget animation](TBD)
 
 ## Instructions
-TBD
+The user may enter a transaction name and amount and click the add or subtract funds buttons. The transaction will be stored to the datase and displayed in the table and chart. The user may add transactions while offline. Transactions entered while offline will be stored to the database once the application is brought online.
 
 ## Installation
 To install necessary dependencies, run the following command:
